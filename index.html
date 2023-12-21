@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notiz App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="icon" type="image/gif" href="/img/postit.png">
+</head>
+
+<body onload="render()">
+
+    <div id="backgroundContainer" class="d-none newNoteBg">
+        <div class="newNoteText">
+            <h1>Ihre Notiz </h1>
+            <!-- Hier wird der Text eingefügt -->
+            <pre><textarea class="inputNote" id="inputNote" cols="20" rows="10" placeholder="Ihre Notiz..."></textarea></pre>
+            <div class="newNoteTextButtons">
+                <button class="deleteButton " onclick="insertDnone('backgroundContainer')"
+                    id="deleteButton">Löschen</button>
+                <button class="createButton "
+                    onclick="pushArray(), deleteButton(), insertDnone('backgroundContainer')">Erstellen</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="trashBackgroundContainer" class="trashBg d-none">
+        <div class="trashContainer">
+            <div class="trashContainerChild">
+                <h1 class="trashHeadline">gelöschte Notizen</h1>
+                <p class="trashBackOption" onclick="insertDnone('trashBackgroundContainer')">Zurück>>X<<< /p>
+            </div>
+            <div id="deletetNotes" class="deletetNotes"></div>
+
+        </div>
+    </div>
+
+    <nav class="navMain">
+        <img src="./img/wastebasket.png" onclick="removeDnone('trashBackgroundContainer')"
+            class="wastebasketImg btuttonDisplayNone">
+        <!-- <button class="allDelete btuttonDisplayNone" onclick="deleteAll()">Alle löschen</button> -->
+        NotizApp
+        <button onclick="removeDnone(`backgroundContainer`), deleteButton()"
+            class="newNoteButton btuttonDisplayNone">Neue Notiz</button>
+    </nav>
+
+    <div class="mainContainer">
+        <div class="legend">
+            <button onclick="removeDnone('backgroundContainer'), deleteButton()" class="newNoteButton">Neue
+                Notiz</button>
+            <!-- <button class="allDelete" onclick="deleteAll()">Alle löschen</button> -->
+            <img src="./img/wastebasket.png" onclick="removeDnone('trashBackgroundContainer')" class="wastebasketImg"
+                alt="">
+            <p class="trashP">Papierkorb</p>
+        </div>
+        <div id="content" class="content"></div>
+    </div>
+
+</body>
+
+
+</html>
